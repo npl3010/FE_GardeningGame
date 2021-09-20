@@ -1,12 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './assets/css/_base.css';
+import App from './views/App';
+import Login from './views/Login';
 import reportWebVitals from './reportWebVitals';
+import UserProvider from './store/providers/UserProvider';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+console.log("%cGardening Game", "color: green; font-weight: bold; font-size: 3vw;");
+console.log("%c(This is made by Nguyễn Phúc Linh)", "color: green; font-weight: bold; font-size: 1vw;");
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+
+        <Route path="/" exact>
+          <UserProvider >
+            <App />
+          </UserProvider>
+        </Route>
+
+        <Route path="/login">
+          <Login />
+        </Route>
+
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
